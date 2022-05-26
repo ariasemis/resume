@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+    branches: '*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: nikeee/setup-pandoc@v1
+    
+    - name: 🧰 Install wkhtmltopdf
+      run: sudo apt-get -y install wkhtmltopdf
+      
+    - name: 🔨 Build
+      run: make
+    
